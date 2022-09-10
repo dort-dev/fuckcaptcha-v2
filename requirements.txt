@@ -1,0 +1,6 @@
+httpx
+httpx[brotli]
+httpx[http2]
+httpx[socks]
+pycryptodome
+colorama
