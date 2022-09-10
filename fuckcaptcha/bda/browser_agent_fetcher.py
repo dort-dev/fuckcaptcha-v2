@@ -1,17 +1,11 @@
-import funny.user_agent_fuckery
 import random
 import string
 
-from faker import Faker
 from fuckcaptcha.bda import fingerprinting
-from faker.providers.user_agent import Provider
-
-
-provider = Provider(Faker())
 
 
 def rand_str(length) -> str:
-    return "".join(random.choices(string.ascii_lowercase, k=length))
+    return "".join(random.choices(string.ascii_lowercase, k=length)).upper()
 
 
 def rand_platform_token() -> str:
@@ -26,7 +20,7 @@ def rand_version() -> str:
 
 
 def rand_bda() -> dict:
-    agent = funny.user_agent_fuckery.agent()
+    agent = f"Firefox/{rand_version()} {rand_str(5)}/{rand_version()} OP/{rand_version()}"
     return {
         "bda": fingerprinting.get_browser_data(agent),
         "agent": agent

@@ -1,10 +1,8 @@
-import random
-
-from fuckcaptcha import cipher
 import base64
 import json
-import secrets
 import time
+
+from fuckcaptcha import cipher
 
 
 def get_browser_data(user_agent: str) -> str:
@@ -16,12 +14,16 @@ def get_browser_data(user_agent: str) -> str:
         "value": "js"
     }, {
         "key": "f",
-        "value": secrets.token_hex(16)
+        "value": "Dort on top."
     }, {
         "key": "enhanced_fp",
         "value": [{
+            "key": "browser_detection_firefox",
+            "value": "POV: multi million dollar company"
+        }, {
             "key": "audio_fingerprint",
-            "value": "nice fucking job funcaptcha you really fucking folded to this?"
+            "value": "let's just check the bda for certain fields that proceed to not verify them. fucking clowns"
+                     "... LOLOL"
         }]
     }]
     data = cipher.encrypt(json.dumps(the_data), key)
