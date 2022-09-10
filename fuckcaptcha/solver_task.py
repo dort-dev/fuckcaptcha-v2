@@ -12,13 +12,13 @@ from fuckcaptcha.bda.browser_agent_fetcher import rand_bda
 
 class Solver:
 
-    def __init__(self, skey, url, agent, bda):
+    def __init__(self, skey, url, agent, bda, proxy):
         self.e_key = None
         self.agent = agent
         self.bda = bda
         self.url = url
         self.skey = skey
-        self.proxy = f"socks5://dort:jewnig@85.202.203.139:1080"
+        self.proxy = f"http://{proxy}"
         self.api_url = "https://client-api.arkoselabs.com"
         self.answers = []
         self.client = httpx.Client(proxies=self.proxy, http2=True)
@@ -205,12 +205,12 @@ class Solver:
             }
 
 
-def solve(skey, url):
+def solve(skey, url, proxy_iter):
     while True:
         nigger = rand_bda()
         agent = nigger['agent']
         bda = nigger['bda']
-        solver = Solver(skey, url, agent, bda)
+        solver = Solver(skey, url, agent, bda, next(proxy_iter))
         try:
             result = solver.solve()
             if result is not None and result['solved']:
